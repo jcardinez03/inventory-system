@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/env-check', function () {
+Route::get('/test-env', function () {
     return [
-        'env_app_key' => env('APP_KEY'),
-        'config_app_key' => config('app.key'),
+        'APP_KEY_exists' => env('APP_KEY') ? 'YES' : 'NO',
+        'APP_KEY_length' => strlen(env('APP_KEY') ?? ''),
     ];
 });
 
