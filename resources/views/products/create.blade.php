@@ -3,8 +3,9 @@
 @section('title', 'Create Product')
 
 @section('content')
+<div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-4 border shadow">
+        <div class="col border shadow">
             <h2 class="mt-3">Create product</h2>
 
             <form action="{{ route('product.store') }}" method="post" class="p-2">
@@ -34,5 +35,6 @@
             </form>
         </div>
     </div>
+</div>
     
 @endsection
