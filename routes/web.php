@@ -6,9 +6,16 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\StockLogController;
 use App\Models\StockLog;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
+
+Route::get('/env-check', function () {
+    return [
+        'env_app_key' => env('APP_KEY'),
+        'config_app_key' => config('app.key'),
+    ];
+});
 
 Route::group(['middleware' => 'auth'], function(){
     // homepage
