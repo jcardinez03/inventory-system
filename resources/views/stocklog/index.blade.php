@@ -3,6 +3,7 @@
 @section('title', 'Stock Logs')
 
 @section('content')
+<div class="table-responsive">
     <table class="table table-striped">
         <thead class = "table-dark">
             <th>ID</th>
@@ -43,4 +44,5 @@
             @endforelse
         </tbody>
     </table>
+</div>
 @endsection
