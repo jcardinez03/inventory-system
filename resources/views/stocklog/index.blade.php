@@ -25,7 +25,7 @@
                 @if ($stocklog->type == "IN")
                     <td class="text-success font-monospace fw-bold">+{{ $stocklog->quantity }}</td>
                 @elseif($stocklog->type == "OUT")
-                    <td class="text-danger font-monospace fw-bold">{{ $stocklog->quantity }}</td>
+                    <td class="text-danger font-monospace fw-bold">-{{ $stocklog->quantity }}</td>
                 @else
                     <td class="">{{ $stocklog->quantity }}</td>
                 @endif

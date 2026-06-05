@@ -84,11 +84,12 @@ class StockController extends Controller
 
         $this->stock_log->user_id = Auth::user()->id;
         $this->stock_log->product_id = $product_id;
-        if($stocks_in >= 0){
+        if($stocks_in > 0){
             $this->stock_log->type = StockLog::STOCK_IN;
         } elseif ($stocks_out > 0) {
             $this->stock_log->type = StockLog::STOCK_OUT;
         }
+
         $this->stock_log->quantity = $stocks_in + $stocks_out;
         $this->stock_log->after_stock = $new_quantity;
         $this->stock_log->save();
