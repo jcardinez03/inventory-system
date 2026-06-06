@@ -90,7 +90,7 @@
 
         <main class="py-4">
             <div class="row justify-content-center bg-light">
-                <div class="col-8">
+                <div class="col-12 col-md-6">
                     @yield('content')
                 </div>
             </div>
