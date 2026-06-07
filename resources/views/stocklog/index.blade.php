@@ -20,6 +20,7 @@
             <tbody>
                 @forelse ($all_stocklogs as $stocklog)
                 <tr>
+                    @if ($stocklog->user_id === Auth::user()->id)    
                     <td>{{ $stocklog->id }}</td>
                     <td>{{ date('M d, Y', strtotime($stocklog->updated_at)) }}</td>
                     <td>{{ $stocklog->product->name }}</td>
@@ -35,6 +36,7 @@
                     <td>{{ $stocklog->after_stock }}</td>
                     <td>{{ $stocklog->user->name }}</td>
                     <td>No remarks</td>
+                    @endif
                 </tr>
                 @empty
                 <tr>
