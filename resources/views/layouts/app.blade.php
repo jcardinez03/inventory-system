@@ -57,6 +57,14 @@
                                     Products
                                 </a>
                             </li>
+
+                            {{-- categories --}}
+                            <li class="nav-item">
+                                <a href="{{ route('category.index') }}" class="nav-link">
+                                    Categories
+                                </a>
+                            </li>
+                            
                             {{-- stock logs --}}
                             <li class="nav-item">
                                 <a href="{{ route('stocklog.index') }}" class="nav-link">

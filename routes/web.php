@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StockController;
@@ -34,4 +35,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     // stock log
     Route::get('/stock-log/index', [StockLogController::class,'index'])->name('stocklog.index');
+
+    // categirues
+    Route::get('/categories', [CategoryController::class,'index'])->name('category.index');
+    Route::post('/categories/store', [CategoryController::class,'store'])->name('category.store');
 });
