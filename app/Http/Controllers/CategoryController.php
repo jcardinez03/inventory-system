@@ -27,16 +27,10 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => [
-                'required',
-                Rule::unique('categories', 'name')
-                    ->where(function ($query) {
-                        return $query->where('user_id', Auth::user()->id);
-                    }),
-            ],
+            'name' => 'required'
         ]);
 
-        $this->category->name = $request->name;
+        $this->category->name = ucfirst($request->name);
         $this->category->user_id = Auth::user()->id;
         $this->category->save();
 
