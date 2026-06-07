@@ -40,6 +40,7 @@
                         <tr>
                             @foreach ($all_categories as $category)
                                 @if ($category->user_id === Auth::user()->id)
+                                <tr>
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td>
@@ -50,6 +51,7 @@
                                         </button>
                                     </form>
                                     </td>
+                                </tr>
                                 @endif
                             @endforeach
                         </tr>
