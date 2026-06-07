@@ -19,7 +19,7 @@ class StockLogController extends Controller
 
     public function index()
     {
-        $all_stocklogs = $this->stocklog->where('user_id', '==', Auth::user()->id)->get();
+        $all_stocklogs = $this->stocklog->latest()->get();
         return view('stocklog.index')->with('all_stocklogs', $all_stocklogs);
     }
 }
