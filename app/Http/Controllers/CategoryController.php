@@ -31,7 +31,7 @@ class CategoryController extends Controller
                 'required',
                 Rule::unique('categories', 'name')
                     ->where(function ($query) {
-                        return $query->where('user_id', Auth::user()->id)->ignoreCase();
+                        return $query->where('user_id', Auth::user()->id);
                     }),
             ],
         ]);
