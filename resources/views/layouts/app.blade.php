@@ -57,10 +57,17 @@
                                     Products
                                 </a>
                             </li>
-
+                            {{-- stock logs --}}
                             <li class="nav-item">
                                 <a href="{{ route('stocklog.index') }}" class="nav-link">
                                     Stock Logs
+                                </a>
+                            </li>
+
+                            {{-- sales --}}
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    Sales
                                 </a>
                             </li>
 
