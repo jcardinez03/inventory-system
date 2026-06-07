@@ -51,7 +51,7 @@
                                
                             </td>
                             <td>
-                                <input type="number" name="quantity_out{{ $product->id }}" id="quantity-out-{{ $product->id }}" class="form-control w-100 d-inline" step="any">
+                                <input type="number" name="quantity_out{{ $product->id }}" id="quantity-out-{{ $product->id }}" max="{{ $product->stock->quantiy }}" class="form-control w-100 d-inline" step="any">
                                
                             </td>
                             <td>
