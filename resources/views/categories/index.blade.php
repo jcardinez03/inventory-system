@@ -31,7 +31,6 @@
                 <table class="table table-sm align-middle text-center">
                     <thead class="table-success">
                         <tr>
-                            <th>ID</th>
                             <th>NAME</th>
                             <th></th>
                         </tr>
@@ -41,7 +40,6 @@
                             @foreach ($all_categories as $category)
                                 @if ($category->user_id === Auth::user()->id)
                                 <tr>
-                                    <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td>
                                         <form action="" method="post">
