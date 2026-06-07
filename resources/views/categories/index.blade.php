@@ -5,7 +5,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-7">
-             <h2 class="fw-light mb-3">Sections</h2>
+             <h2 class="fw-light mb-3">Categories</h2>
 
                 <!-- form -->
                 <div class="mb-3">
@@ -14,6 +14,9 @@
                         <div class="row gx-2">
                             <div class="col">
                                 <input type="text" name="name" id="name" placeholder="Add a new section here..." max="50" class="form-control" required>
+                                @error('name')
+                                    <p class="text-danger small">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="col-auto">
                                 <button type="submit" class="btn btn-info w-100 fw-bold" name="btn_add">
@@ -26,7 +29,7 @@
 
                 <!-- table -->
                 <table class="table table-sm align-middle text-center">
-                    <thead class="table-info">
+                    <thead class="table-success">
                         <tr>
                             <th>ID</th>
                             <th>NAME</th>
