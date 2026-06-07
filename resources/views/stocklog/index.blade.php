@@ -18,7 +18,7 @@
                 <th>REMARKS</th>
             </thead>
             <tbody>
-                @forelse ($all_stocklogs as $stocklog)
+                @forelse ($all_stocklogs->user as $stocklog)
                 <tr>
                     <td>{{ $stocklog->id }}</td>
                     <td>{{ date('M d, Y', strtotime($stocklog->updated_at)) }}</td>
