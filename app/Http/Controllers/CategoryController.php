@@ -37,7 +37,7 @@ class CategoryController extends Controller
         ]);
 
         $this->category->name = $request->name;
-
+        $this->category->user_id = Auth::user()->id;
         $this->category->save();
 
         return back();
