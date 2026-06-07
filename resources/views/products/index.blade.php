@@ -31,6 +31,7 @@
                 @forelse ($all_products as $product)
                     <tr>
                         {{-- <td>{{ $product->id }}</td> --}}
+                        @if ($product['user_id'] === Auth::user()->id)     
                         <td>{{ $product->sku }}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->category->name }}</td>
@@ -62,6 +63,7 @@
                                 </button>
                             </td>
                         </form>
+                        @endif
                     </tr>
                 @include('products.modal.action')
                 @empty
