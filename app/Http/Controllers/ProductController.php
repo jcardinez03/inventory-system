@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Stock;
 use App\Models\StockLog;
+use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
     private $product;
@@ -49,7 +50,7 @@ class ProductController extends Controller
 
         # for SKU
         $this->product->sku = $this->createSKU($request->category);
-
+        $this->product->user_id = Auth::user()->id;
         $this->product->save();
 
         # Stock table
