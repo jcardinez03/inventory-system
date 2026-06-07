@@ -23,7 +23,9 @@
                     <label for="category" class="form-label">Category</label>
                     <select name="category" id="category" class="form-select">
                         @foreach ($all_categories as $category)
+                        @if ($category->user_id === Auth::user()->id)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endif
                         @endforeach
                     </select>
                     @error('category')
