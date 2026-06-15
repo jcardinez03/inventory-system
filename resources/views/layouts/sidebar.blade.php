@@ -31,13 +31,8 @@
             </a>
         </li>
         <li class="nav-item  h4">
-            <a href="{{ route('stocklog.index') }}" class="nav-link">
-                <i class="fa-regular fa-circle-down text-success"></i> Stock In
-            </a>
-        </li>
-        <li class="nav-item  h4">
-            <a href="" class="nav-link">
-                <i class="fa-regular fa-circle-up text-danger"></i> Stock Out
+            <a href="{{ route('stocklog.index', 'all') }}" class="nav-link">
+                <i class="fa-solid fa-arrow-trend-up"></i> Stock Logs
             </a>
         </li>
         <li class="nav-item  h4">

@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::delete('/stock/{product_id}/destroy', [StockController::class,'destroy'])->name('stock.destroy');
 
     // stock log
-    Route::get('/stock-log/index', [StockLogController::class,'index'])->name('stocklog.index');
+    Route::get('/stock-log/{status}', [StockLogController::class,'index'])->name('stocklog.index');
 
     // categirues
     Route::get('/categories', [CategoryController::class,'index'])->name('category.index');

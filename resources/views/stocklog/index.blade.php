@@ -4,9 +4,26 @@
 
 @section('content')
 <div class="container-fluid">
+
+    <div class="mb-2">
+        <a href="{{ route('stocklog.index', 'all') }}" class="btn btn-outline-secondary">ALL</a>
+        <a href="{{ route('stocklog.index', 'in') }}" class="btn btn-outline-secondary">IN</a>
+        <a href="{{ route('stocklog.index', 'out') }}" class="btn btn-outline-secondary">OUT</a>
+        <form action="{{ request()->url() }}" method="get" class="">
+            @csrf
+            
+            <select name="product_id" id="product-id" class="form-select mt-2 d-inline" style="width: 25%" onchange="this.form.submit()">
+                <option value="" hidden>Select Product</option>
+                @foreach ($all_products as $product)
+                    <option value="{{ $product->id }}">{{ $product->name }}</option>
+                @endforeach
+            </select>
+        </form>
+    </div>
+
     <div class="table-responsive">
         <table class="table table-striped">
-            <thead class = "table-dark">
+            <thead class= "table-dark">
                 <th>ID</th>
                 <th>DATE</th>
                 <th>PRODUCT</th>
@@ -29,8 +46,6 @@
                         <td class="text-success font-monospace fw-bold">+{{ $stocklog->quantity }}</td>
                     @elseif($stocklog->type == "OUT")
                         <td class="text-danger font-monospace fw-bold">-{{ $stocklog->quantity }}</td>
-                    @else
-                        <td class="">{{ $stocklog->quantity }}</td>
                     @endif
                     <td>{{ $stocklog->before_stock}}</td>
                     <td>{{ $stocklog->after_stock }}</td>
