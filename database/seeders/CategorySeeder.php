@@ -17,9 +17,11 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             ['name' => 'Snacks',
+            'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now()],
             ['name' => 'Beverages',
+            'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now()],
         ];
