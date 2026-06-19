@@ -21,14 +21,16 @@
 <body>
     <div id="app">
         <div class="row gx-0">
+            @auth
             <div class="col-2">
                 @include('layouts.sidebar')
             </div>
-            <div class="col-10">
+            @endauth
+            <div class="col">
                 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="{{ url('/') }}">
-                            Dashboard
+                            <h2 class="h4">{{ config('app.name') }}</h2>
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                             <span class="navbar-toggler-icon"></span>
@@ -58,7 +60,7 @@
                                 @else
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->name }}
+                                            <i class="fas fa-user-circle text-dark"></i> {{ Auth::user()->name }}
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -81,7 +83,7 @@
 
                 <main class="py-4">
                     <div class="row justify-content-center">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12">
                             @yield('content')
                         </div>
                     </div>

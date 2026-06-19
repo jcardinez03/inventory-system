@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\CategoryProduct;
 use App\Models\Stock;
 use App\Models\StockLog;
 use Illuminate\Support\Facades\Auth;
@@ -13,8 +14,10 @@ class ProductController extends Controller
 {
     private $product;
     private $category;
+    private $category_product;
     private $stock;
     private $stock_log;
+
 
     public function __construct(Product $product, Category $category, Stock $stock, StockLog $stock_log)
     {
@@ -54,13 +57,18 @@ class ProductController extends Controller
         $this->product->user_id = Auth::user()->id;
         $this->product->save();
 
+        $category_product = [
+            'category_id' => $request->category
+        ];
+
+        $this->product->categoryProduct()->create($category_product);
+
         # Stock table
 
         $this->stock->product_id = $this->product->id;
         $this->stock->quantity = 0;
         $this->stock->save();
     
-
         return redirect()->route('product.index');
     }
 
@@ -86,4 +94,6 @@ class ProductController extends Controller
 
         return back();
     }
+
+    
 }

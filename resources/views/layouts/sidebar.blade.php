@@ -2,7 +2,7 @@
     <div class="logo">
         <div class="row gx-0">
             <div class="col-2 align-middle mt-3">
-                <i class="fa-solid fa-cube display-5 ms-3"></i> 
+                <i class="fa-solid fa-cube fa-4x ms-3"></i> 
             </div>
             <div class="col-10">
                 <h1 class="ms-5">{{ config('app.name') }}</h1>

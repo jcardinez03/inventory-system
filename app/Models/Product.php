@@ -22,4 +22,10 @@ class Product extends Model
     {
         return $this->hasMany(StockLog::class);
     }
+
+    # get categories under a product
+    public function categoryProduct()
+    {
+        return $this->hasMany(CategoryProduct::class);
+    }
 }

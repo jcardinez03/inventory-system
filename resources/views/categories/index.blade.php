@@ -3,58 +3,97 @@
 @section('title', 'Categories')
 
 @section('content')
-    <div class="row justify-content-center">
-        <div class="col-7">
-             <h2 class="fw-light mb-3">Categories</h2>
-
-                <!-- form -->
-                <div class="mb-3">
-                    <form action="{{ route('category.store') }}" method="post">
-                        @csrf
-                        <div class="row gx-2">
-                            <div class="col">
-                                <input type="text" name="name" id="name" placeholder="Add a new section here..." max="50" class="form-control" required>
-                                @error('name')
-                                    <p class="text-danger small">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="col-auto">
-                                <button type="submit" class="btn btn-info w-100 fw-bold" name="btn_add">
-                                    <i class="fas fa-plus"></i> Add
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+    <div class="row justify-content-center p-2 gx-0">
+        <div class="col">
+            <div class="row w-50 ms-4">
+                <div class="col">
+                    <h2 class="fw-light mb-3 d-inline">Categories</h2>
                 </div>
-
-                <!-- table -->
-                <table class="table table-sm align-middle text-center">
-                    <thead class="table-success">
-                        <tr>
-                            <th>NAME</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            @foreach ($all_categories as $category)
-                                @if ($category->user_id === Auth::user()->id)
-                                <tr>
-                                    <td>{{ $category->name }}</td>
-                                    <td>
-                                        <form action="" method="post">
-                                            @csrf
-                                            <button type="submit" class="btn btn-outline-danger border-0" value="{{ $category->id }}" title="Delete">
-                                            <i class="fas fa-trash-can"></i>
-                                        </button>
-                                    </form>
-                                    </td>
-                                </tr>
-                                @endif
-                            @endforeach
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="col text-end">
+                    <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#add-category"><i class="fas fa-plus"></i> Add Category</button>
+                </div>
+                @include('categories.modal.status')
+            </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <div class="ms-4 card border border-1" style="height: 130px">
+                <div class="card-body pb-0">
+                    <p>Total Categories</p>
+                    <p class="h2 fw-bold">{{ $all_categories->count() }}</p>
+                    <p class="small text-muted">across all products</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="ms-4 card border border-1" style="height: 130px">
+                <div class="card-body pb-0">
+                    <p>Most stocked</p>
+                    <p class="h2 fw-bold">{{ $largest_product_name }}</p>
+                    <p class="small text-muted">{{ $largest_product_count }} total products</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="ms-4 card border border-1" style="height: 130px">
+                <div class="card-body pb-0">
+                    <p>Least stocked</p>
+                    <p class="h2 fw-bold">{{ $least_product['least_product_name'] }}</p>
+                    <p class="small text-muted">{{ $least_product['least_product_count'] }}</p>
+                </div>
+            </div>
+        </div>   
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-4 ms-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>All Categories</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead class="table-dark text-white">
+                            <tr>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>Product Count</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($all_categories as $category)
+                                <tr>
+                                    <td>{{ $category->id }}</td>
+                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $category->categoryProduct->count() }}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-outline-secondary">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <form action="#" method="post" class="d-inline">
+                                            @csrf
+
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash-can"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex">
+                    {{ $all_categories->links() }}
+                </div>
+            </div>
+            </div>
+
+            <div class="col">
+
+        </div>
+    </div>
+    
 @endsection
